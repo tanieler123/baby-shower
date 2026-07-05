@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Baby Shower Celebration - Baby Daine</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primaryBlue: '#8EB1D1',
+                        lightBlue: '#A7C7E7',
+                        navyBlue: '#1C2B48',
+                        softWhite: '#E8ECEF',
+                        paleBlueGray: '#C4D8E5',
+                        jollibeeRed: '#E31837',
+                        jollibeeYellow: '#FFC400'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'float-slow': 'float 6s ease-in-out infinite',
+                        'float-medium': 'float 4s ease-in-out infinite',
+                        'float-fast': 'float 3s ease-in-out infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .silver-gradient {
+            background: linear-gradient(135deg, #CFD8DC 0%, #ECEFF1 50%, #B0BEC5 100%);
+        }
+        .luxury-shadow {
+            box-shadow: 0 20px 40px -15px rgba(28, 43, 72, 0.07);
+        }
+        .bg-watercolor {
+            background-color: #dfeefc;
+            /* background-image: radial-gradient(at 0% 0%, rgba(167, 199, 231, 0.25) 0px, transparent 50%),
+                              radial-gradient(at 100% 100%, rgba(142, 177, 209, 0.25) 0px, transparent 50%); */
+        }
+        .subtle-jollibee-border {
+            position: relative;
+        }
+        .subtle-jollibee-border::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #E31837 0%, #FFC400 100%);
+            border-radius: 2px;
+            opacity: 0.6;
+        }
+        /* Floating Particles Animation */
+        @keyframes float-up {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0.8); opacity: 0; }
+            10% { opacity: 0.4; }
+            90% { opacity: 0.4; }
+            100% { transform: translateY(-20vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+        .particle {
+            position: absolute;
+            animation: float-up linear infinite;
+            z-index: 0;
+            color: rgba(167, 199, 231, 0.6); /* lightBlue with opacity */
+        }
+    </style>
+</head>
+<body class="bg-watercolor font-sans text-navyBlue antialiased overflow-x-hidden relative">
+
+    <!-- Floating Background Particles (Baby Themed) -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <i class="fa-solid fa-bottle-droplet particle text-2xl md:text-9xl" style="left: 10%; animation-duration: 15s; animation-delay: 0s;"></i>
+        <i class="fa-solid fa-star particle text-xl md:text-8xl" style="left: 25%; animation-duration: 16s; animation-delay: 0s; color: rgba(212, 245, 1, 0.5);"></i>
+        <i class="fa-solid fa-baby-carriage particle text-xl md:text-8xl" style="left: 45%; animation-duration: 17s; animation-delay: 0s; color: rgba(66, 136, 201, 0.5);"></i>
+        <i class="fa-solid fa-cubes-stacked particle text-xl md:text-8xl" style="left: 60%; animation-duration: 26s; animation-delay: 0s; color: rgba(7, 126, 238, 0.5);"></i>
+        <i class="fa-solid fa-gift particle text-xl md:text-8xl" style="left: 70%; animation-duration: 22s; animation-delay: 0s; color: rgba(34, 84, 132, 0.5);"></i>
+        <i class="fa-solid fa-heart particle text-xl md:text-8xl" style="left: 80%; animation-duration: 19s; animation-delay: 0s; color: rgba(227, 24, 55, 0.2);"></i>
+        <i class="fa-solid fa-star particle text-sm md:text-8xl" style="left: 90%; animation-duration: 20s; animation-delay: 0s;"></i>
+    </div>
+
+    <!-- Floating RSVP Button -->
+    <div id="floating-rsvp" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-500">
+        <a href="#rsvp" class="bg-navyBlue text-white hover:bg-primaryBlue px-6 py-3 rounded-full font-semibold shadow-xl flex items-center gap-2 transition-all duration-300 hover:scale-105">
+            <i class="fa-solid fa-envelope-open-text"></i> RSVP
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-[90vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden pt-12 pb-24">
+        
+        <div class="max-w-3xl mx-auto z-10 space-y-6 px-4 relative mt-10">
+            <!-- Subtle Luxurious Ribbon Icon -->
+            <div class="inline-flex items-center gap-2 text-primaryBlue bg-white/60 backdrop-blur-md px-5 py-2 rounded-full border border-white/80 shadow-sm text-sm font-bold tracking-wide animate-float-slow">
+                <i class="fa-solid fa-ribbon"></i> YOU ARE INVITED
+            </div>
+            
+            <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-navyBlue leading-tight mt-4">
+                A Baby Shower <br><span class="text-primaryBlue relative">
+                    Celebration
+                    <!-- Sparkle accents -->
+                    <i class="fa-solid fa-sparkles absolute -top-4 -right-8 text-jollibeeYellow text-xl opacity-70 animate-pulse hidden md:block"></i>
+                </span>
+            </h1>
+            
+            <p class="text-base sm:text-lg md:text-xl text-navyBlue/80 max-w-2xl mx-auto font-light leading-relaxed">
+                Join us as we celebrate <span class="font-semibold text-navyBlue">Baby Duccio</span> and shower Stacey & Daine with love before their newest adventure begins.
+            </p>
+
+            <div class="pt-6">
+                <a href="#rsvp" class="inline-block bg-primaryBlue text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-navyBlue transition-all duration-300 transform hover:-translate-y-1">
+                    RSVP Now <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Countdown Timer (Made Mobile Friendly) -->
+        <div class="w-full max-w-xl mx-auto mt-12 z-10 px-2 sm:px-4">
+            <div class="bg-white/70 backdrop-blur-md rounded-2xl p-4 sm:p-6 luxury-shadow border border-white/50 grid grid-cols-4 gap-2 sm:gap-4 text-center">
+                <div>
+                    <span id="days" class="block font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-navyBlue">00</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-wider text-navyBlue/60 font-semibold">Days</span>
+                </div>
+                <div>
+                    <span id="hours" class="block font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-navyBlue">00</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-wider text-navyBlue/60 font-semibold">Hours</span>
+                </div>
+                <div>
+                    <span id="minutes" class="block font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-navyBlue">00</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-wider text-navyBlue/60 font-semibold">Mins</span>
+                </div>
+                <div>
+                    <span id="seconds" class="block font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-navyBlue">00</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-wider text-navyBlue/60 font-semibold">Secs</span>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <!-- SVG Wave Divider -->
+        <!-- <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-0 pointer-events-none">
+            <svg class="relative block w-full h-[50px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,130.98,132.8,204.8,125.62,243.68,121.84,282.72,109.11,321.39,56.44Z" fill="rgba(255,255,255,0.4)"></path>
+            </svg>
+        </div> -->
+    </header>
+    <!-- Centered Baby Blocks & Ribbon Row -->
+        <div class="top-32 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-4 animate-float-medium pointer-events-none scale-50 sm:scale-75 md:scale-100 origin-bottom z-20">
+        
+         <!-- Horizontal Blocks Row -->
+             <div class="flex flex-row items-center space-x-2 md:space-x-3">
+                <!-- Block B -->
+                <div class="w-24 h-24 bg-softWhite/90 backdrop-blur-sm border-4 border-primaryBlue rounded-2xl flex items-center justify-center shadow-xl transform -rotate-3 translate-y-1">
+                    <span class="font-serif text-4xl font-bold text-navyBlue tracking-wide">B</span>
+                </div>
+                <!-- Block A -->
+                <div class="w-24 h-24 bg-softWhite/90 backdrop-blur-sm border-4 border-primaryBlue rounded-2xl flex items-center justify-center shadow-xl transform rotate-6 -translate-y-2">
+                    <span class="font-serif text-4xl font-bold text-primaryBlue tracking-wide">A</span>
+                </div>
+                <!-- Block B (2) -->
+                <div class="w-24 h-24 bg-softWhite/90 backdrop-blur-sm border-4 border-primaryBlue rounded-2xl flex items-center justify-center shadow-xl transform -rotate-2 translate-y-2">
+                    <span class="font-serif text-4xl font-bold text-navyBlue tracking-wide">B</span>
+                </div>
+                <!-- Block Y -->
+                <div class="w-24 h-24 bg-softWhite/90 backdrop-blur-sm border-4 border-primaryBlue rounded-2xl flex items-center justify-center shadow-xl transform rotate-3 -translate-y-0.5">
+                    <span class="font-serif text-4xl font-bold text-primaryBlue tracking-wide">Y</span>
+                 </div>
+            </div>
+
+        <!-- "BOY" Blue Ribbon Banner (Positioned beneath the blocks) -->
+        <div class="bg-gradient-to-r from-primaryBlue via-primaryBlue to-primaryBlue text-white text-lg font-bold tracking-[0.3em] uppercase px-10 py-2.5 rounded-md shadow-lg transform -rotate-1 border border-white/20 relative before:absolute before:content-[''] before:border-8 before:border-transparent">
+            Boy
+        </div>
+    </div>
+        
+    <!-- Adjusted Bottom Arrow Indicator -->
+    <div class="absolute bottom-6 animate-bounce text-navyBlue/40 w-full text-center z-10">
+        <i class="fa-solid fa-chevron-down text-xl"></i>
+    </div>
+
+    <!-- Event Details Section -->
+    <section id="details" class="py-16 md:py-24 px-4 bg-white/40 backdrop-blur-sm relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-xl mx-auto mb-12 md:mb-16 space-y-3">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold subtle-jollibee-border pb-4 inline-block">Event Details</h2>
+                <p class="text-navyBlue/60 font-light mt-4">Everything you need to know about our special day</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
+                <!-- Date & Time Card -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl luxury-shadow border border-paleBlueGray/30 flex flex-col justify-between items-center text-center transition-all duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 bg-lightBlue/20 rounded-full flex items-center justify-center text-primaryBlue mb-4 md:mb-6 text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-regular fa-calendar-days"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-xl font-bold mb-2">When</h3>
+                        <p class="text-navyBlue/80 font-medium">July 26, 2026</p>
+                        <p class="text-navyBlue/60 text-sm mt-1">7:00 PM - 9:00 PM</p>
+                    </div>
+                    <div class="mt-6 w-full">
+                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Baby+Shower+Celebration+-+Baby+Daine&dates=20260726T190000/20260726T210000&details=Join+us+to+celebrate+Baby+Daine!&location=Jollibee+Imus+Southbound" target="_blank" class="inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-primaryBlue hover:text-navyBlue uppercase transition-colors bg-softWhite/50 px-4 py-2 rounded-lg">
+                            <i class="fa-solid fa-calendar-plus"></i> Add to Calendar
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Venue Card -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl luxury-shadow border border-paleBlueGray/30 flex flex-col justify-between items-center text-center transition-all duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 bg-lightBlue/20 rounded-full flex items-center justify-center text-primaryBlue mb-4 md:mb-6 text-xl relative group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span class="absolute top-0 right-0 w-3 h-3 bg-jollibeeRed rounded-full border-2 border-white animate-pulse"></span>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-xl font-bold mb-2">Where</h3>
+                        <p class="text-navyBlue/80 font-medium">Jollibee Imus Southbound</p>
+                        <p class="text-navyBlue/60 text-sm mt-1">Aguinaldo Highway, Imus, Cavite</p>
+                    </div>
+                    <div class="mt-6 w-full">
+                        <a href="https://maps.google.com/?q=Jollibee+Imus+Southbound" target="_blank" class="inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-primaryBlue hover:text-navyBlue uppercase transition-colors bg-softWhite/50 px-4 py-2 rounded-lg">
+                            <i class="fa-solid fa-map-location-dot"></i> Google Maps
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Dress Code Card -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl luxury-shadow border border-paleBlueGray/30 flex flex-col justify-between items-center text-center transition-all duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 bg-lightBlue/20 rounded-full flex items-center justify-center text-primaryBlue mb-4 md:mb-6 text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
+                    <div class="w-full">
+                        <h3 class="font-serif text-xl font-bold mb-3">Dress Code</h3>
+                        <div class="flex items-center justify-center gap-2 md:gap-3">
+                            <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full shadow-sm border border-gray-200" style="background-color: #8EB1D1;"></div>
+                            <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full shadow-sm border border-gray-200" style="background-color: #A7C7E7;"></div>
+                            <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full shadow-sm border border-gray-200" style="background-color: #1C2B48;"></div>
+                            <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full shadow-sm border border-gray-200" style="background-color: #E8ECEF;"></div>
+                            <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full shadow-sm border border-gray-200" style="background-color: #C4D8E5;"></div>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <span class="text-[10px] md:text-xs font-semibold tracking-wider text-navyBlue/40 uppercase bg-softWhite/50 px-4 py-2 rounded-lg">Soft Blues & Silver</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warm Gift Registry Message Section -->
+    <section class="py-12 md:py-16 px-4 bg-gradient-to-b from-transparent to-paleBlueGray/20 relative z-10">
+        <div class="max-w-3xl mx-auto text-center bg-white/90 backdrop-blur-md p-8 md:p-12 rounded-3xl luxury-shadow border border-white/60 relative">
+            <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-paleBlueGray rounded-full flex items-center justify-center text-navyBlue shadow-md animate-bounce" style="left: 44.5%;">
+                <i class="fa-solid fa-gift"></i>
+            </div>
+            <p class="font-serif text-lg md:text-2xl text-navyBlue/90 italic leading-relaxed mt-4">
+                "Your presence is the greatest gift, but if you'd like to bless the parents-to-be, baby essentials are greatly appreciated as they prepare to welcome Baby Duccio into the world."
+            </p>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="py-16 md:py-24 px-4 max-w-3xl mx-auto relative z-10">
+        <div class="bg-white rounded-3xl luxury-shadow border border-paleBlueGray/40 overflow-hidden relative">
+            <!-- Decorative Silver/Blue Top Accent Bar -->
+            <div class="h-2 silver-gradient w-full"></div>
+            
+            <div class="p-6 sm:p-8 md:p-12 space-y-8">
+                <div class="text-center space-y-2">
+                    <i class="fa-regular fa-envelope text-3xl text-primaryBlue mb-2"></i>
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold">Kindly Respond</h2>
+                    <p class="text-navyBlue/60 font-light text-sm md:text-base">Please reply by July 16, 2026 to help us finalize arrangements.</p>
+                </div>
+
+                <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScXVK9H0cTmhzW6a8jhIDrNAGdCP43Wm1_rFD8vsrBwJOH_gw/formResponse" method="POST" class="space-y-6" id="rsvp-form">
+                    <div class="space-y-1">
+                        <label for="name" class="text-xs md:text-sm font-semibold tracking-wide uppercase text-navyBlue/80">Full Name</label>
+                        <input type="text" id="name" name="entry.73295347" required placeholder="Guest Name" 
+                            class="w-full px-4 py-3 rounded-xl border border-paleBlueGray focus:outline-none focus:ring-2 focus:ring-primaryBlue/50 bg-softWhite/30 transition-all text-sm md:text-base">
+                    </div>
+
+                    <div class="space-y-1">
+                        <label for="guests" class="text-xs md:text-sm font-semibold tracking-wide uppercase text-navyBlue/80">Number of Guests</label>
+                        <select id="guests" name="entry.709521120" required 
+                            class="w-full px-4 py-3 rounded-xl border border-paleBlueGray focus:outline-none focus:ring-2 focus:ring-primaryBlue/50 bg-softWhite/30 transition-all text-sm md:text-base">
+                            <option value="1">1 Person</option>
+                            <option value="2">2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-xs md:text-sm font-semibold tracking-wide uppercase text-navyBlue/80 block">Will you attend?</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+                            <label class="border border-paleBlueGray rounded-xl p-3 md:p-4 flex items-center gap-3 cursor-pointer hover:bg-paleBlueGray/10 transition-colors">
+                                <input type="radio" name="entry.692178704" value="Yes, I'll be there!" required class="text-primaryBlue focus:ring-primaryBlue w-4 h-4">
+                                <span class="font-medium text-navyBlue/90 text-sm md:text-base">Yes, I'll be there! 💙</span>
+                            </label>
+                            <label class="border border-paleBlueGray rounded-xl p-3 md:p-4 flex items-center gap-3 cursor-pointer hover:bg-paleBlueGray/10 transition-colors">
+                                <input type="radio" name="entry.692178704" value="Sorry, I can't make it" required class="text-primaryBlue focus:ring-primaryBlue w-4 h-4">
+                                <span class="font-medium text-navyBlue/60 text-sm md:text-base">Sorry, I can't make it</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-navyBlue hover:bg-primaryBlue text-white font-semibold py-4 rounded-xl shadow-md transition-all duration-300 hover:scale-[1.01] uppercase tracking-wider text-sm mt-4 flex justify-center items-center gap-2">
+                        Submit RSVP <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+
+                <!-- Social Sharing Links -->
+                                <div class="pt-6 border-t border-paleBlueGray/40 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
+                                    <span class="text-xs uppercase font-semibold tracking-wider text-navyBlue/50">Share Invite:</span>
+                                    <div class="flex items-center gap-3">
+                                        <!-- Facebook / Messenger Share -->
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://your-invitation-link.com" 
+                                        target="_blank" 
+                                        title="Share via Messenger / Facebook"
+                                        class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:scale-110 transition-transform shadow-md">
+                                            <i class="fa-brands fa-facebook-messenger"></i>
+
+                                        </a>
+
+                                        <!-- Direct Copy Link Button -->
+                                        <button onclick="copyInviteLink(this)" 
+                                                title="Copy Invitation Link"
+                                                class="w-10 h-10 rounded-full bg-navyBlue text-white flex items-center justify-center hover:scale-110 transition-transform shadow-md cursor-pointer relative group">
+                                            <i class="fa-solid fa-link text-sm transition-all duration-300"></i>
+                                            <!-- Tooltip Toast Confirmation -->
+                                            <span class="absolute -top-10 scale-0 group-[.copied]:scale-100 transition-transform bg-navyBlue text-[10px] text-white px-2 py-1 rounded shadow-md pointer-events-none whitespace-nowrap">
+                                                Link Copied!
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- Script to Handle the Clipboard "Copy Link" Action -->
+                    <script>
+        function copyInviteLink(buttonElement) {
+            // Replaces automatically with your current live website URL
+            const invitationUrl = window.location.href; 
+            
+            navigator.clipboard.writeText(invitationUrl).then(() => {
+                // Add the animation trigger class
+                buttonElement.classList.add('copied');
+                const icon = buttonElement.querySelector('i');
+                
+                // Swap icon temporarily to a checkmark
+                icon.className = "fa-solid fa-check text-sm text-green-400";
+                
+                // Reset back to normal after 2 seconds
+                setTimeout(() => {
+                    buttonElement.classList.remove('copied');
+                    icon.className = "fa-solid fa-link text-sm";
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+                    </script>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 bg-navyBlue text-white text-center px-4 space-y-4 relative z-10 overflow-hidden">
+        <i class="fa-solid fa-moon text-white/5 absolute top-4 left-10 text-6xl"></i>
+        <i class="fa-solid fa-star text-white/5 absolute bottom-4 right-10 text-4xl"></i>
+        
+        <p class="font-serif text-lg md:text-xl tracking-wide text-lightBlue">We can't wait to celebrate with you! 💙</p>
+        <div class="h-px bg-white/10 max-w-xs mx-auto"></div>
+        <p class="text-[10px] md:text-xs text-white/50 tracking-wider uppercase">
+            Made with love for Stacey, Daine & Baby Duccio
+        </p>
+    </footer>
+
+    <!-- Scripting for Interactions -->
+    <script>
+        // Countdown Timer
+        const targetDate = new Date("July 26, 2026 19:00:00").getTime();
+
+        const countdownInterval = setInterval(() => {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d < 10 ? "0" + d : d;
+            document.getElementById("hours").innerText = h < 10 ? "0" + h : h;
+            document.getElementById("minutes").innerText = m < 10 ? "0" + m : m;
+            document.getElementById("seconds").innerText = s < 10 ? "0" + s : s;
+
+            if (difference < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+            }
+        }, 1000);
+
+        // Floating RSVP Button Visibility
+        const floatingRsvp = document.getElementById("floating-rsvp");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 400) {
+                floatingRsvp.classList.remove("translate-y-20", "opacity-0");
+                floatingRsvp.classList.add("translate-y-0", "opacity-100");
+            } else {
+                floatingRsvp.classList.add("translate-y-20", "opacity-0");
+                floatingRsvp.classList.remove("translate-y-0", "opacity-100");
+            }
+        });
+    </script>
+</body>
+</html>
