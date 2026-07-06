@@ -163,33 +163,33 @@
         
     </header>
     <!-- Centered Baby Blocks & Ribbon Row -->
-        <div class="top-32 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-4 animate-float-medium pointer-events-none scale-50 sm:scale-75 md:scale-100 origin-bottom z-20">
-        
-         <!-- Horizontal Blocks Row -->
-             <div class="flex flex-row items-center space-x-2 md:space-x-3">
-                <!-- Block B -->
-                <div class="w-24 h-24 bg-softWhite/90 backdrop-blur-sm border-4 border-primaryBlue rounded-2xl flex items-center justify-center shadow-xl transform -rotate-3 translate-y-1">
-                    <span class="font-serif text-4xl font-bold text-navyBlue tracking-wide">B</span>
-                </div>
-                <!-- Block A -->
-                <div class="w-24 h-24 bg-softWhite/90 backdrop-blur-sm border-4 border-primaryBlue rounded-2xl flex items-center justify-center shadow-xl transform rotate-6 -translate-y-2">
-                    <span class="font-serif text-4xl font-bold text-primaryBlue tracking-wide">A</span>
-                </div>
-                <!-- Block B (2) -->
-                <div class="w-24 h-24 bg-softWhite/90 backdrop-blur-sm border-4 border-primaryBlue rounded-2xl flex items-center justify-center shadow-xl transform -rotate-2 translate-y-2">
-                    <span class="font-serif text-4xl font-bold text-navyBlue tracking-wide">B</span>
-                </div>
-                <!-- Block Y -->
-                <div class="w-24 h-24 bg-softWhite/90 backdrop-blur-sm border-4 border-primaryBlue rounded-2xl flex items-center justify-center shadow-xl transform rotate-3 -translate-y-0.5">
-                    <span class="font-serif text-4xl font-bold text-primaryBlue tracking-wide">Y</span>
-                 </div>
+    <div class="top-32 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-4 animate-float-medium pointer-events-none scale-50 sm:scale-75 md:scale-100 origin-bottom z-20">
+    
+        <!-- Horizontal Blocks Row -->
+        <div class="flex flex-row items-center space-x-2 md:space-x-3">
+            <!-- Block B -->
+            <div class="w-24 h-24 bg-softWhite/90 backdrop-blur-sm border-4 border-primaryBlue rounded-2xl flex items-center justify-center shadow-xl transform -rotate-3 translate-y-1">
+                <span class="font-serif text-4xl font-bold text-navyBlue tracking-wide">B</span>
             </div>
-
-            <!-- "BOY" Blue Ribbon Banner (Positioned beneath the blocks) -->
-            <div class="bg-gradient-to-r from-primaryBlue via-primaryBlue to-primaryBlue text-white text-lg font-bold tracking-[0.3em] uppercase px-10 py-2.5 rounded-md shadow-lg transform -rotate-1 border border-white/20 relative before:absolute before:content-[''] before:border-8 before:border-transparent">
-                Boy
+            <!-- Block A -->
+            <div class="w-24 h-24 bg-softWhite/90 backdrop-blur-sm border-4 border-primaryBlue rounded-2xl flex items-center justify-center shadow-xl transform rotate-6 -translate-y-2">
+                <span class="font-serif text-4xl font-bold text-primaryBlue tracking-wide">A</span>
             </div>
+            <!-- Block B (2) -->
+            <div class="w-24 h-24 bg-softWhite/90 backdrop-blur-sm border-4 border-primaryBlue rounded-2xl flex items-center justify-center shadow-xl transform -rotate-2 translate-y-2">
+                <span class="font-serif text-4xl font-bold text-navyBlue tracking-wide">B</span>
+            </div>
+            <!-- Block Y -->
+            <div class="w-24 h-24 bg-softWhite/90 backdrop-blur-sm border-4 border-primaryBlue rounded-2xl flex items-center justify-center shadow-xl transform rotate-3 -translate-y-0.5">
+                <span class="font-serif text-4xl font-bold text-primaryBlue tracking-wide">Y</span>
+                </div>
         </div>
+
+        <!-- "BOY" Blue Ribbon Banner (Positioned beneath the blocks) -->
+        <div class="bg-gradient-to-r from-primaryBlue via-primaryBlue to-primaryBlue text-white text-lg font-bold tracking-[0.3em] uppercase px-10 py-2.5 rounded-md shadow-lg transform -rotate-1 border border-white/20 relative before:absolute before:content-[''] before:border-8 before:border-transparent">
+            Boy
+        </div>
+    </div>
         
     <!-- Adjusted Bottom Arrow Indicator -->
     <div class="absolute bottom-6 animate-bounce text-navyBlue/40 w-full text-center z-10">
@@ -288,7 +288,14 @@
                     <p class="text-navyBlue/60 font-light text-sm md:text-base">Please reply by July 16, 2026 to help us finalize arrangements. <br> Due to limited capacity, only invited guests may attend.</p>
                 </div>
 
-                <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScXVK9H0cTmhzW6a8jhIDrNAGdCP43Wm1_rFD8vsrBwJOH_gw/formResponse" method="POST" class="space-y-6" id="rsvp-form">
+                <form
+                    action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScXVK9H0cTmhzW6a8jhIDrNAGdCP43Wm1_rFD8vsrBwJOH_gw/formResponse"
+                    method="POST"
+                    target="hidden_iframe"
+                    onsubmit="submitted=true;"
+                    class="space-y-6"
+                    id="rsvp-form">
+
                     <div class="space-y-1">
                         <label for="name" class="text-xs md:text-sm font-semibold tracking-wide uppercase text-navyBlue/80">Full Name</label>
                         <input type="text" id="name" name="entry.73295347" required placeholder="Guest Name" 
@@ -313,34 +320,29 @@
                         Submit RSVP <i class="fa-solid fa-paper-plane"></i>
                     </button>
                 </form>
+                <!-- SUCCESS MESSAGE -->
+                <div id="rsvp-success-message" class="hidden text-center py-10 space-y-4">
+
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+                        <i class="fa-solid fa-check text-3xl text-green-600"></i>
+                    </div>
+
+                    <h2 class="font-serif text-3xl font-bold text-navyBlue">
+                        Thank You!
+                    </h2>
+
+                    <p class="text-navyBlue/70">
+                        Your RSVP has been received.<br>
+                        We can't wait to celebrate Baby Duccio with you! 💙
+                    </p>
+
+                </div>
+
             </div>
 
         </div>
 
-                    <!-- Script to Handle the Clipboard "Copy Link" Action -->
-                    <script>
-        function copyInviteLink(buttonElement) {
-            // Replaces automatically with your current live website URL
-            const invitationUrl = window.location.href; 
-            
-            navigator.clipboard.writeText(invitationUrl).then(() => {
-                // Add the animation trigger class
-                buttonElement.classList.add('copied');
-                const icon = buttonElement.querySelector('i');
-                
-                // Swap icon temporarily to a checkmark
-                icon.className = "fa-solid fa-check text-sm text-green-400";
-                
-                // Reset back to normal after 2 seconds
-                setTimeout(() => {
-                    buttonElement.classList.remove('copied');
-                    icon.className = "fa-solid fa-link text-sm";
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-            });
-        }
-                    </script>
+        
     </section>
 
     <!-- Footer -->
@@ -354,6 +356,25 @@
             Made with love for Stacey, Daine & Baby Duccio
         </p>
     </footer>
+
+    <!-- Hidden Iframe Worker to Intercept Google Forms Redirect -->
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showCustomRsvpSuccess(); }"></iframe>
+
+    <script>
+        // Flag to track if the user submitted the form
+        let submitted = false;
+
+        function showCustomRsvpSuccess() {
+
+            if (!submitted) return;
+
+            submitted = false;
+
+            document.getElementById("rsvp-form").classList.add("hidden");
+            document.getElementById("rsvp-success-message").classList.remove("hidden");
+
+        }
+    </script>
 
     <!-- Scripting for Interactions -->
     <script>
